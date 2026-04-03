@@ -6,7 +6,7 @@ function toggleMenu() {
 
 // Scroll to next section step by step
 function scrollToNextSection() {
-    const sections = ['hero', 'about', 'domains', 'director', 'conditions', 'cta'];
+    const sections = ['hero', 'about', 'domains', 'director', 'conditions', 'faq', 'cta'];
     const scrollTop = window.scrollY;
     const windowHeight = window.innerHeight;
 
@@ -45,6 +45,22 @@ function revealOnScroll() {
             element.classList.add('on');
         }
     });
+}
+
+// FAQ accordion toggle
+function toggleFaq(button) {
+    const faqItem = button.closest('.faq-item');
+    const isActive = faqItem.classList.contains('active');
+
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Toggle clicked item
+    if (!isActive) {
+        faqItem.classList.add('active');
+    }
 }
 
 // Modal functions
@@ -195,6 +211,25 @@ XAM-XAM is not just a training program; it is a lasting commitment to youth, com
     'conditions.investment_label': { fr: 'Investissement', en: 'Investment' },
     'conditions.investment_value': { fr: '100% Rémunéré', en: '100% Paid' },
     'conditions.investment_desc': { fr: "Pendant votre stage de 3 mois, vous percevez une rémunération complète. Votre excellence mérite d'être récompensée.", en: 'During your 3-month internship, you receive full compensation. Your excellence deserves to be rewarded.' },
+
+    // FAQ
+    'faq.stag': { fr: 'Questions Fréquentes', en: 'Frequently Asked Questions' },
+    'faq.title_html': { fr: 'Foire aux <em>Questions</em>', en: 'Frequently Asked <em>Questions</em>' },
+    'faq.subtitle': { fr: "Tout ce que vous devez savoir sur le programme Xam Xam Elite", en: "Everything you need to know about the Xam Xam Elite program" },
+    'faq.q1': { fr: "Quelles sont les conditions d'inscription ?", en: 'What are the registration requirements?' },
+    'faq.a1': { fr: "Pour vous inscrire au programme Xam Xam Elite, vous devez être titulaire d'un diplôme universitaire (Bac+4 à Bac+7), démontrer l'excellence académique, avoir un potentiel de leadership et être disponible pendant toute la durée de 6 mois du programme.", en: 'To register for the Xam Xam Elite program, you must hold a university degree (Bac+4 to Bac+7), demonstrate academic excellence, have leadership potential and be available for the full 6-month duration of the program.' },
+    'faq.q2': { fr: 'Comment se déroule le processus de sélection ?', en: 'How does the selection process work?' },
+    'faq.a2': { fr: "Le processus de sélection comprend une étude de votre dossier académique, un entretien motivationnel obligatoire, une lettre de recommandation requise et un test d'aptitude professionnelle. La durée du processus est de 4 à 7 jours ouvrables.", en: 'The selection process includes a review of your academic file, a mandatory motivational interview, a required letter of recommendation and a professional aptitude test. The process takes 4 to 7 business days.' },
+    'faq.q3': { fr: 'Le programme est-il rémunéré ?', en: 'Is the program paid?' },
+    'faq.a3': { fr: "Oui ! Le programme est 100% rémunéré. Pendant votre stage professionnel de 3 mois, vous percevez une rémunération complète. Votre excellence mérite d'être récompensée.", en: 'Yes! The program is 100% paid. During your 3-month professional internship, you receive full compensation. Your excellence deserves to be rewarded.' },
+    'faq.q4': { fr: 'Quelle est la durée de la formation ?', en: 'How long is the training?' },
+    'faq.a4': { fr: "Le programme dure 6 mois au total : 3 mois de formation accélérée dans votre domaine spécialisé, suivis de 3 mois en stratégie, leadership et compétences avancées, avec un stage professionnel rémunéré pour consolider votre expertise.", en: 'The program lasts 6 months in total: 3 months of accelerated training in your specialized field, followed by 3 months in strategy, leadership and advanced skills, with a paid professional internship to consolidate your expertise.' },
+    'faq.q5': { fr: 'Où se déroule la formation ?', en: 'Where does the training take place?' },
+    'faq.a5': { fr: "La formation se déroule à Dakar, Sénégal, plus précisément à OUEST FOIRE VDN. Les stages professionnels peuvent avoir lieu dans diverses entreprises partenaires selon votre domaine de spécialisation.", en: 'The training takes place in Dakar, Senegal, specifically at OUEST FOIRE VDN. Professional internships may take place in various partner companies depending on your field of specialization.' },
+    'faq.q6': { fr: 'Quels sont les domaines de formation disponibles ?', en: 'What training fields are available?' },
+    'faq.a6': { fr: "Nous proposons plus de 20 domaines de formation spécialisée : Marketing, Commerce International, Gestion des Projets, MBA, MBO, Analyste Financier, Comptabilité, Cyber-Sécurité, Entreposage, Ingénieur Financier, Transport Logistique, Contrôle de Gestion, Informatique, Ressources Humaines, Ingénieur en Monétique, Ingénieur en Certification, Communication Digitale, Génie Électronique, ISO Engineering et Développement Web.", en: 'We offer over 20 specialized training fields: Marketing, International Commerce, Project Management, MBA, MBO, Financial Analyst, Accounting, Cybersecurity, Warehousing, Financial Engineer, Transport Logistics, Management Control, IT, Human Resources, Payment Systems Engineer, Certification Engineer, Digital Communication, Electronic Engineering, ISO Engineering and Web Development.' },
+    'faq.q7': { fr: 'Comment puis-je postuler ?', en: 'How can I apply?' },
+    'faq.a7': { fr: "Pour postuler, cliquez sur le bouton \"S'inscrire Maintenant\" et remplissez le formulaire d'inscription avec vos informations personnelles, votre domaine de choix et vos coordonnées. Vous serez ensuite contacté pour la suite du processus de sélection.", en: 'To apply, click the "Register Now" button and fill out the registration form with your personal information, your chosen field and your contact details. You will then be contacted for the next step in the selection process.' },
 
     // CTA
     'cta.title_html': { fr: "Prêt à Rejoindre <em>l'Élite</em> ?", en: "Ready to Join the <em>Elite</em>?" },
