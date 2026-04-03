@@ -133,6 +133,34 @@ nav {
     }
 }
 
+/* LANGUAGE TOGGLE */
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1.5px solid rgba(201, 168, 76, 0.4);
+    border-radius: 6px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: all .25s;
+    font-family: 'DM Sans', sans-serif
+}
+
+.lang-toggle:hover {
+    background: rgba(201, 168, 76, 0.1);
+    border-color: var(--gold)
+}
+
+.lang-toggle .lang-label {
+    display: block;
+    line-height: 1
+}
+
 /* HAND POINTER */
 .hand-pointer {
     position: fixed;
@@ -1371,6 +1399,11 @@ footer p {
 
     .burger {
         display: flex
+    }
+
+    .lang-toggle {
+        padding: 5px 8px;
+        font-size: 10px
     }
 
     .hand-pointer {
