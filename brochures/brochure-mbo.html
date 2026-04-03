@@ -115,14 +115,44 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
   .bcta{background:#f0f0ea}
   .bhero-img-wrap{animation:none;border:2px solid #ccc}
 }
+@media(max-width:768px){
+  .bnav{padding:10px 4%}
+  .bnav .logo strong{font-size:15px}
+  .bnav .logo span{font-size:8px;letter-spacing:1.5px}
+  .bnav-back{padding:7px 14px;font-size:12px}
+}
 @media(max-width:640px){
   .bhero{padding:110px 5% 0}
   .bsec{padding:50px 0}
   .mod{flex-direction:column;gap:8px}
   .phs{padding:24px 18px}
-  .bnav{padding:12px 5%}
+  .bnav{padding:10px 4%;gap:6px}
   .bnav .logo span{display:none}
+  .bnav .logo strong{font-size:14px}
+  .bnav-back{padding:8px 10px;font-size:0;gap:0;border-radius:50%;min-width:38px;justify-content:center}
+  .bnav-back svg{width:16px;height:16px}
+  .bnav-back::after{content:'Retour';font-size:0}
 }
+@media(max-width:380px){
+  .bnav{padding:8px 3%}
+  .bnav .logo img{width:36px;height:36px}
+  .bnav .logo strong{font-size:13px}
+  .bnav-back{min-width:34px;padding:7px 8px}
+  .bnav-back svg{width:14px;height:14px}
+}
+
+/* FORM MODAL */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:10000;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s ease}
+.modal-overlay.active{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-container{position:relative;width:100%;max-width:900px;height:90vh;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:slideUp .3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.modal-container iframe{width:100%;height:100%;border:none}
+.modal-close{position:absolute;top:12px;right:12px;width:40px;height:40px;background:rgba(0,0,0,.7);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .28s}
+.modal-close svg{width:20px;height:20px;stroke:#fff}
+.modal-close:hover{background:var(--gold);transform:scale(1.1)}
+.modal-close:hover svg{stroke:var(--gd)}
+@media(max-width:900px){.modal-container{height:95vh;max-width:100%}.modal-close{width:36px;height:36px;top:8px;right:8px}.modal-close svg{width:18px;height:18px}}
     </style>
 </head>
 <body>
@@ -237,7 +267,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
 <section class="bcta">
     <h2>Prêt à Rejoindre <em>l'Élite</em> ?</h2>
     <p>Les inscriptions pour la promo 2025 sont ouvertes. Places limitées — postulez dès maintenant.</p>
-    <a href="../index.html" class="bcta-btn">
+    <a href="#" onclick="openModal(); return false;" class="bcta-btn">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         Commencer Ma Candidature
     </a>
@@ -247,6 +277,24 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
 <footer class="bfooter">
     <p>© 2026 Xam Xam Elite – Tous droits réservés · <a href="../index.html#contact">Contact</a></p>
 </footer>
+
+<!-- FORM MODAL -->
+<div id="form-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-container">
+        <button class="modal-close" onclick="closeModal()" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <iframe src="https://forms.gle/yyZpDiBUv4n1XYJC9" title="Formulaire d'inscription Xam Xam Elite" frameborder="0"></iframe>
+    </div>
+</div>
+<script>
+function openModal(){const m=document.getElementById('form-modal');m.classList.add('active');document.body.style.overflow='hidden'}
+function closeModal(e){if(e&&e.target!==e.currentTarget)return;const m=document.getElementById('form-modal');m.classList.remove('active');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+</script>
 
 </body>
 </html>
