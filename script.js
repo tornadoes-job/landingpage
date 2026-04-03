@@ -72,4 +72,25 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('DOMContentLoaded', () => {
     revealOnScroll();
     window.addEventListener('scroll', revealOnScroll);
+
+    // Position hand pointer to point at S'inscrire button
+    const hand = document.getElementById('hand-pointer');
+    const btnWrap = document.getElementById('btn-inscrire-wrap');
+    const heroBtn = document.getElementById('btn-hero-inscrire');
+
+    function positionHand() {
+        if (!hand) return;
+        const isMobile = window.innerWidth <= 900;
+        const target = isMobile ? heroBtn : btnWrap;
+
+        if (target) {
+            const rect = target.getBoundingClientRect();
+            hand.style.left = (rect.left + rect.width / 2 - 26) + 'px';
+            hand.style.top = (rect.bottom + 2) + 'px';
+        }
+    }
+
+    positionHand();
+    window.addEventListener('resize', positionHand);
+    window.addEventListener('scroll', positionHand);
 });

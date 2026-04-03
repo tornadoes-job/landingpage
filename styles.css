@@ -102,32 +102,29 @@ nav {
     color: var(--gd) !important;
     font-weight: 600 !important;
     padding: 9px 20px;
-    border-radius: 7px
+    border-radius: 7px;
+    animation: btnPulse 2s ease-in-out infinite
 }
 
-.btn-nav-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px
+@keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.5) }
+    50% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0) }
 }
 
-.btn-nav-indicator svg {
-    width: 16px;
-    height: 16px;
-    color: var(--gold);
-    animation: handWave 2s ease-in-out infinite;
-    transform-origin: bottom center
+/* HAND POINTER */
+.hand-pointer {
+    position: fixed;
+    z-index: 250;
+    pointer-events: none;
+    font-size: 52px;
+    line-height: 1;
+    filter: drop-shadow(0 3px 10px rgba(201, 168, 76, 0.5));
+    animation: handPoint 1.5s ease-in-out infinite
 }
 
-@keyframes handWave {
-    0%, 100% { transform: rotate(0deg) }
-    10% { transform: rotate(14deg) }
-    20% { transform: rotate(-8deg) }
-    30% { transform: rotate(14deg) }
-    40% { transform: rotate(-4deg) }
-    50% { transform: rotate(10deg) }
-    60%, 100% { transform: rotate(0deg) }
+@keyframes handPoint {
+    0%, 100% { transform: translate(0, 0) }
+    50% { transform: translateY(-10px) }
 }
 
 /* SCROLL HINT BUTTON */
@@ -1307,16 +1304,63 @@ footer p {
         bottom: -16px
     }
 
+    nav {
+        padding: 12px 5%
+    }
+
     nav .nav-ul {
-        display: none
+        display: none;
+        position: fixed;
+        top: 62px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(7, 16, 11, 0.98);
+        backdrop-filter: blur(18px);
+        padding: 16px 5%;
+        gap: 0;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        max-height: calc(100vh - 62px);
+        overflow-y: auto
+    }
+
+    nav .nav-ul li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+    }
+
+    nav .nav-ul li:last-child {
+        border-bottom: none
+    }
+
+    nav .nav-ul a {
+        display: block;
+        padding: 14px 0;
+        font-size: 15px
+    }
+
+    .btn-nav {
+        justify-content: center;
+        padding: 12px 20px
+    }
+
+    nav .nav-ul li:last-child {
+        padding: 12px 0
     }
 
     .burger {
         display: flex
     }
+
+    .hand-pointer {
+        font-size: 40px
+    }
 }
 
 @media(max-width:580px) {
+    .hand-pointer {
+        font-size: 36px
+    }
+
     .hero-btns {
         flex-direction: column
     }
