@@ -133,7 +133,7 @@ nav {
 /* SCROLL HINT BUTTON */
 .scroll-hint-btn {
     position: fixed;
-    right: 32px;
+    left: 32px;
     bottom: 32px;
     width: 48px;
     height: 48px;
@@ -159,12 +159,12 @@ nav {
 .scroll-hint-btn:hover {
     background: rgba(201, 168, 76, .22);
     border-color: var(--gold);
-    transform: translateY(-50%) scale(1.1)
+    transform: scale(1.1)
 }
 
 @keyframes scrollBounce {
-    0%, 100% { transform: translateY(-50%) }
-    50% { transform: translateY(calc(-50% + 6px)) }
+    0%, 100% { transform: translateY(0) }
+    50% { transform: translateY(6px) }
 }
 
 .burger {
@@ -1317,10 +1317,6 @@ footer p {
 }
 
 @media(max-width:580px) {
-    .scroll-hint-btn {
-        display: none
-    }
-
     .hero-btns {
         flex-direction: column
     }

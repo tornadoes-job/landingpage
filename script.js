@@ -4,6 +4,34 @@ function toggleMenu() {
     navUl.style.display = navUl.style.display === 'flex' ? 'none' : 'flex';
 }
 
+// Scroll to next section step by step
+function scrollToNextSection() {
+    const sections = ['hero', 'about', 'domains', 'director', 'conditions', 'cta'];
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    // Find current section based on scroll position
+    let currentIdx = 0;
+    for (let i = 0; i < sections.length; i++) {
+        const section = document.getElementById(sections[i]);
+        if (section) {
+            const sectionTop = section.offsetTop;
+            if (scrollTop >= sectionTop - windowHeight / 2) {
+                currentIdx = i;
+            }
+        }
+    }
+
+    // Scroll to next section
+    const nextIdx = currentIdx + 1;
+    if (nextIdx < sections.length) {
+        const nextSection = document.getElementById(sections[nextIdx]);
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
 // Reveal on scroll
 function revealOnScroll() {
     const reveals = document.querySelectorAll('.rv');
@@ -44,20 +72,4 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('DOMContentLoaded', () => {
     revealOnScroll();
     window.addEventListener('scroll', revealOnScroll);
-
-    // Scroll hint button visibility
-    const scrollBtn = document.querySelector('.scroll-hint-btn');
-    if (scrollBtn) {
-        function toggleScrollBtn() {
-            if (window.scrollY > 120) {
-                scrollBtn.style.opacity = '0';
-                scrollBtn.style.pointerEvents = 'none';
-            } else {
-                scrollBtn.style.opacity = '1';
-                scrollBtn.style.pointerEvents = 'auto';
-            }
-        }
-        toggleScrollBtn();
-        window.addEventListener('scroll', toggleScrollBtn);
-    }
 });
