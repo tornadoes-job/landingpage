@@ -82,11 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!hand) return;
         const isMobile = window.innerWidth <= 900;
         const target = isMobile ? heroBtn : btnWrap;
+        const halfWidth = 17;
 
         if (target) {
             const rect = target.getBoundingClientRect();
-            hand.style.left = (rect.left + rect.width / 2 - 26) + 'px';
-            hand.style.top = (rect.bottom + 2) + 'px';
+            hand.style.left = (rect.left + rect.width / 2 - halfWidth) + 'px';
+            hand.style.top = (rect.bottom - 2) + 'px';
         }
     }
 

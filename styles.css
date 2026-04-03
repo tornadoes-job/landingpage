@@ -103,12 +103,34 @@ nav {
     font-weight: 600 !important;
     padding: 9px 20px;
     border-radius: 7px;
+    position: relative;
+    overflow: visible;
     animation: btnPulse 2s ease-in-out infinite
 }
 
+.btn-nav::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--gold-l), var(--gold), var(--gold-d));
+    z-index: -1;
+    animation: borderGlow 2s ease-in-out infinite;
+    filter: blur(4px)
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.3; transform: scale(1) }
+    50% { opacity: 0.8; transform: scale(1.03) }
+}
+
 @keyframes btnPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.5) }
-    50% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0) }
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.3)
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(201, 168, 76, 0), 0 0 30px rgba(201, 168, 76, 0.5)
+    }
 }
 
 /* HAND POINTER */
@@ -116,15 +138,15 @@ nav {
     position: fixed;
     z-index: 250;
     pointer-events: none;
-    font-size: 52px;
+    font-size: 34px;
     line-height: 1;
-    filter: drop-shadow(0 3px 10px rgba(201, 168, 76, 0.5));
-    animation: handPoint 1.5s ease-in-out infinite
+    filter: drop-shadow(0 2px 6px rgba(201, 168, 76, 0.6)) drop-shadow(0 0 12px rgba(201, 168, 76, 0.3));
+    animation: handFloat 2s ease-in-out infinite
 }
 
-@keyframes handPoint {
-    0%, 100% { transform: translate(0, 0) }
-    50% { transform: translateY(-10px) }
+@keyframes handFloat {
+    0%, 100% { transform: translateY(0) }
+    50% { transform: translateY(-8px) }
 }
 
 /* SCROLL HINT BUTTON */
@@ -1352,13 +1374,13 @@ footer p {
     }
 
     .hand-pointer {
-        font-size: 40px
+        font-size: 30px
     }
 }
 
 @media(max-width:580px) {
     .hand-pointer {
-        font-size: 36px
+        font-size: 26px
     }
 
     .hero-btns {
