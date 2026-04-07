@@ -120,7 +120,8 @@
       "Bash(aria-label=\"whatsapp\")",
       "Bash(modal *)",
       "Bash(node *)",
-      "Bash(rm *)"
+      "Bash(rm *)",
+      "Bash(sed *)"
     ]
   },
   "$version": 3

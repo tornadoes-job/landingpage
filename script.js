@@ -335,6 +335,14 @@ function applyTranslations(lang) {
             el.textContent = translations[key][lang];
         }
     });
+
+    // Update brochure links (data-fr / data-en for href)
+    document.querySelectorAll('.brochure-link[data-fr][data-en]').forEach(el => {
+        const url = el.getAttribute(`data-${lang}`);
+        if (url) {
+            el.href = url;
+        }
+    });
 }
 
 function toggleLang() {
