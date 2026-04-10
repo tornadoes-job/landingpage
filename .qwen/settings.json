@@ -121,7 +121,9 @@
       "Bash(modal *)",
       "Bash(node *)",
       "Bash(rm *)",
-      "Bash(sed *)"
+      "Bash(sed *)",
+      "Bash(identify *)",
+      "Bash(file *)"
     ]
   },
   "$version": 3
